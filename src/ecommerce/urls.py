@@ -19,15 +19,16 @@ from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from .views import home, contact, signin, register
+from .views import home, contact, signin, register, signout
 
 urlpatterns = [
-    url(r'^$', home),
-    url(r'^contact/$', contact),
-    url(r'^login/$', signin),
-    url(r'^register/$', register),
+    url(r'^$', home, name="home"),
+    url(r'^contact/$', contact, name="contact"),
+    url(r'^login/$', signin, name="signin"),
+    url(r'^logout/$', signout, name="signout"),
+    url(r'^register/$', register, name="register"),
     url(r'^admin/', admin.site.urls),
-    url(r'^products/', include("products.urls"))
+    url(r'^products/', include("products.urls", namespace="products"))
 ]
 
 if settings.DEBUG:

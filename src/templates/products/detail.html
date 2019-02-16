@@ -1,4 +1,17 @@
-{{ product.title }} <br>
-{{ product.description }} <br>
-{{ product.price }} <br>
-<img src="{{ product.image.url }}" alt="">
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ product.title }}</h1>
+            {{ product.timestamp|timesince }} ago
+            <p>{{ product.description }}</p>
+            <span>Price: ${{ product.price }}</span>
+            <img src="{{ product.image.url }}" alt="">
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    

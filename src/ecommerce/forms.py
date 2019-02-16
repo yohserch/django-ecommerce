@@ -31,17 +31,24 @@ class ContactForm(forms.Form):
 class LoginForm(forms.Form):
     """LoginForm definition."""
 
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Username"}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Password"}))
 
 
 class RegisterForm(forms.Form):
     """RegisterForm definition."""
 
-    username = forms.CharField()
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    password_confirm = forms.CharField(label="Confirm Password", widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Username"}))
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Your Email"
+            }
+        )
+    )
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Password"}))
+    password_confirm = forms.CharField(label="Confirm Password", widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Confirm your password"}))
 
     def clean_username(self):
         username = self.cleaned_data.get("username")
