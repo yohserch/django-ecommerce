@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 from .views import home, contact, signin, register
@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^login/$', signin),
     url(r'^register/$', register),
     url(r'^admin/', admin.site.urls),
+    url(r'^products/', include("products.urls"))
 ]
 
 if settings.DEBUG:
