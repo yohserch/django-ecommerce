@@ -1,11 +1,5 @@
 
 {% for product in product_list %}
-    
-    {% if product.featured %}
-        <a href="{% url 'product-featured-detail' product.slug %}">{{ product.title }}</a><br>
-    {% else %}
-        <a href="{% url 'product-detail' product.slug %}">{{ product.title }}</a><br>
-    {% endif %}
-        
+        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a><br>
 {% endfor %}
     

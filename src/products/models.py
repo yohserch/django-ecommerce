@@ -1,6 +1,7 @@
 import os
 import random
 import string
+from django.urls import reverse
 from django.db import models
 from django.utils.text import slugify
 from django.db.models.signals import pre_save, post_save
@@ -70,6 +71,10 @@ class Product(models.Model):
     active      = models.BooleanField(default=True)
 
     objects = ProductManager()
+
+    def get_absolute_url(self):
+        return reverse("product-detail", kwargs={"slug": self.slug})
+    
 
     def __str__(self):
         return self.title
