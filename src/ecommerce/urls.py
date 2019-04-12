@@ -28,7 +28,8 @@ urlpatterns = [
     url(r'^logout/$', signout, name="signout"),
     url(r'^register/$', register, name="register"),
     url(r'^admin/', admin.site.urls),
-    url(r'^products/', include("products.urls", namespace="products"))
+    url(r'^products/', include("products.urls", namespace="products")),
+    url(r'^search/', include("search.urls", namespace="search")),
 ]
 
 if settings.DEBUG:
